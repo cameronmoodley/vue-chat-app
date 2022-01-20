@@ -13,21 +13,29 @@
 import { defineComponent, ref } from "vue";
 import { useRoute } from "vue-router";
 
-import ChatBox from "@/components/chat/ChatBox.vue";
-import ChatWindow from "@/components/chat/ChatWindow.vue";
-import { iMessage } from "@/components/chat/interface.iMessage";
+import ChatBox from "../components/chat/ChatBox.vue";
+import ChatWindow from "../components/chat/ChatWindow.vue";
+import { iMessage } from "../components/chat/interface.iMessage";
+import { io } from "socket.io-client";
+import { BASE_URL } from "../utilities/";
 
 export default defineComponent({
   name: "Chat",
   components: { ChatBox, ChatWindow },
   setup() {
+    const socket = io(BASE_URL);
     const router = useRoute();
+    const messages = ref<iMessage[]>([]);
+
     let name =
       typeof router.params.name !== "string"
         ? "new phone who dis"
         : router.params.name;
 
-    const messages = ref<iMessage[]>([]);
+    socket.on("joined", (data) => {
+      writeMessage(`${data} has joined the chat`);
+    });
+
     const writeMessage = (message: string): void => {
       const newMessage: iMessage = { name, message };
       messages.value.push(newMessage);
