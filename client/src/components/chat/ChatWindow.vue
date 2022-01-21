@@ -1,6 +1,6 @@
 <template lang="">
   <div class="chat-window">
-    <div>{{ message.message }} from {{ message.name }}</div>
+    <div>{{ message.message }} {{ message.name }}</div>
   </div>
 </template>
 <script>

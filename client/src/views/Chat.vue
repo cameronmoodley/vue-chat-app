@@ -28,9 +28,7 @@ export default defineComponent({
     const messages = ref<iMessage[]>([]);
 
     let name =
-      typeof router.params.name !== "string"
-        ? "new phone who dis"
-        : router.params.name;
+      typeof router.params.name !== "string" ? "Admin" : router.params.name;
 
     socket.on("joined", (data) => {
       writeMessage(`${data} has joined the chat`);
