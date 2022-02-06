@@ -21,6 +21,10 @@ const routes: Array<RouteRecordRaw> = [
     name: "chat",
     component: () =>
       import(/* webpackChunkName: "about" */ "../views/Chat.vue"),
+    beforeEnter: (to, from, next) => {
+      console.log("xxxxx");
+      next();
+    },
   },
 ];
 

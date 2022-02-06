@@ -1,5 +1,5 @@
 <template lang="">
-  <div class="chat-window">
+  <div class="chat-box">
     <div>{{ message.message }} {{ message.name }}</div>
   </div>
 </template>
@@ -13,7 +13,8 @@ export default defineComponent({
 });
 </script>
 <style>
-.chat-window {
+.chat-box {
   border: solid 2px black;
+  height: 30px;
 }
 </style>

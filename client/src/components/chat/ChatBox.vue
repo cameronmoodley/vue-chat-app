@@ -22,6 +22,6 @@ export default defineComponent({
 </script>
 <style scoped>
 input {
-  width: 50%;
+  width: 90%;
 }
 </style>
